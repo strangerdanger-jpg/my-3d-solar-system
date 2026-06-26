@@ -1,0 +1,20 @@
+Q1
+class Book
+    private title
+    private author
+
+    public procedure _new_(t, a)
+        _title_ = t
+        author = _a_
+    _endprocedure_
+endclass
+
+Q2
+class EBook __________ Book
+    private fileSize
+
+    public procedure new(t, a, s)
+        __________.new(t, a)
+        fileSize = __________
+    endprocedure
+_endclass_

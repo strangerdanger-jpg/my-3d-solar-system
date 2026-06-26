@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Solar System Simulation</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="module" src="main.js"></script>
+</head>
+<body>
+	<!--//<header>
+		<h1>3D Solar System Simulation</h1>
+	//</header>-->
+
+	<div id="container">
+		<div id="containercanvas">
+			<canvas id="simulationcanvas"></canvas>
+		</div>
+		<div id="hover-label"></div>
+		<div id="controls">
+         		<button id="pausebtn">Pause</button>
+				<button id="resetbtn">Reset</button>
+				<button id="trailbtn">Show Trails</button>
+       		<div id="debug-info">
+				X: <span id="camX">0</span> | 
+				Y: <span id="camY">0</span> | 
+				Z: <span id="camZ">0</span>
+			</div>
+    	</div>
+		<div id="bottom-control">
+			<div class="control-group">
+				<label>Time Slider</label>
+				<input type="range" id="timeslider" min="1" max="1000000" value="10000">
+				<span id="speedValue">6.94</span><span> days/second</span>
+			</div>
+		</div>
+
+		<div id="info-panel" style="display: none;">
+			<button id="close-panel">×</button>
+			
+			<h2 id="selected-name">Planet Name</h2>
+			<p id="info-description" style="font-style: italic; margin-bottom: 10px;"></p>
+
+			<div class="stats-container">
+				<div class="stat-item"><strong>Diameter:</strong> <span id="info-diameter"></span></div>
+				<div class="stat-item"><strong>Moons:</strong> <span id="info-moons"></span></div>
+				<div class="stat-item"><strong>Orbital Period:</strong> <span id="info-period"></span></div>
+				<div class="stat-item"><strong>Axial Tilt:</strong> <span id="info-tilt"></span></div>
+				<div class="stat-item"><strong>Colour:</strong> <span id="info-colour"></span></div>
+				<div class="stat-item"><strong>Apparent Mag:</strong> <span id="info-apparent"></span></div>
+				<div class="stat-item"><strong>Absolute Mag:</strong> <span id="info-absolute"></span></div>
+			</div>
+
+			<hr>
+
+			<div class="fact-section" style="background: rgba(255,255,255,0.1); padding: 8px; border-radius: 4px; margin-bottom: 15px;">
+				<strong>Did you know?</strong><br>
+				<span id="info-fact"></span>
+			</div>
+
+			<div class="stat-row">
+				<span>Base Mass:</span>
+				<span id="current-mass-display">0</span> <small>kg</small>
+			</div>
+
+			<div class="control-group">
+				<label>Adjust Mass Multiplier</label>
+				<input type="range" id="massSlider" min="0.1" max="10" step="0.1" value="1">
+				<span id="massValue" class="value-display">1.0</span> <strong>x</strong>
+			</div>
+			<div id="analysis-section">
+			<h3>Scientific Analysis</h3>
+			<select id="graphType" style="width: 100%; padding: 5px; margin-bottom: 10px; background: #222; color: white;">
+				<option value="speed">Orbital Speed vs Radius</option>
+				<option value="force">Gravitational Force vs Distance</option>
+				<option value="kepler">Kepler's 3rd Law (T² vs r³)</option>
+			</select>
+			
+			<div style="background: rgba(0,0,0,0.3); border-radius: 4px; padding: 5px;">
+				<canvas id="planetGraph" width="400" height="250"></canvas>
+			</div>
+
+			<button id="exportgraph">
+				Export Graph (.png)
+			</button>
+		</div>
+		</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='renderer.js') }}"></script>
+	<script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
