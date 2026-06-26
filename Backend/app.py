@@ -4,8 +4,8 @@ from physics.system import system
 import os
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-template_dir = os.path.join(base_dir, "frontend", "templates")
-static_dir = os.path.join(base_dir, "frontend", "static")
+template_dir = os.path.join(base_dir, "Frontend", "templates")
+static_dir = os.path.join(base_dir, "Frontend", "static")
 
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
